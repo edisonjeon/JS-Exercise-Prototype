@@ -39,8 +39,13 @@ function Airplane(name) {
           + It should return a string with `name` and `age`. Example: "Mary, 50"
   */
   
- function Person() {
-    
+ function Person(name, age) {
+   this.name = name;
+   this.age = age;
+   this.stomach = [];
+   this.toString = function() {
+     return `${this.name}, ${this.age}`
+   }
   }
  
  
@@ -63,9 +68,19 @@ function Airplane(name) {
           + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
   */
   
- function Car() {
-    
+ function Car(model, milesPerGallon) {
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
   }
+
+  Car.prototype.fill = function (gallons) {
+    this.tank += gallons;
+  }
+
+  const vehicle = new Car('Subaru', 22);
+console.log(vehicle);
   
   
   /*
@@ -75,18 +90,25 @@ function Airplane(name) {
       - Besides the methods on Person.prototype, babies have the ability to `.play()`:
           + Should return a string "Playing with x", x being the favorite toy.
   */
- function Baby() {
-   
+  function Baby(name, age, favoriteToy) {
+   Person.call(this, name, age)
+   this.favoriteToy = favoriteToy;
+  }
+ 
+  Baby.prototype = Object.create(Person.prototype);
+
+  Baby.prototype.play = function () {
+    return `Playing with ${this.favoriteToy}.`
   }
  
   
   /* 
     TASK 4
     In your own words explain the four principles for the "this" keyword below:
-    1. 
-    2. 
-    3. 
-    4. 
+    1. when 'new' is used, 'this' produces something new, not the object that is pre binded to the window.
+    2. apply, call, bind used to call function / this is an argument
+    3. this can have different meanings depends on how it is used / called
+    4. global object = window 
   */
   
   
