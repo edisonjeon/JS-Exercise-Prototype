@@ -43,19 +43,21 @@ function Airplane(name) {
    this.name = name;
    this.age = age;
    this.stomach = [];
-   this.eat = function(someFood) {
-     this.stomach.push(someFood)
    };
-   this.poop = function() {
-     this.stomach.pop()
-   };
-   this.toString = function(){
-    return `${this.name}, ${this.age}`
-  }
-}
-    
+   
 
-    
+Person.prototype.toString = function() {
+  return `${this.name}, ${this.age}`;
+};  
+
+Person.prototype.eat = function(someFood) {
+  this.stomach.push(someFood);
+  // does not need a return , and consider it having no issues if there are 10 items?
+};
+
+Person.prototype.poop = function() {
+  return this.stomach.pop();
+}
 
   
   
