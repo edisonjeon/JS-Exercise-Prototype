@@ -51,12 +51,13 @@ Person.prototype.toString = function() {
 };  
 
 Person.prototype.eat = function(someFood) {
-  this.stomach.push(someFood);
-  // does not need a return , and consider it having no issues if there are 10 items?
+  if (this.stomach.length < 10) {
+    this.stomach.push(someFood)
+    }
 };
 
 Person.prototype.poop = function() {
-  return this.stomach.pop();
+  this.stomach.pop();
 }
 
   
