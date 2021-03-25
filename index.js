@@ -43,13 +43,17 @@ function Airplane(name) {
    this.name = name;
    this.age = age;
    this.stomach = [];
+   this.eat = function(someFood) {
+     this.stomach.push(someFood)
+   };
+   this.poop = function() {
+     this.stomach.pop()
+   };
+   this.toString = function(){
+    return `${this.name}, ${this.age}`
   }
-    Person.prototype.toString = function() {
-      return `${this.name}, ${this.age}`
-    };
-    Person.prototype.eat('someFood') = function() {
-      return this.stomach.push
-    }
+}
+    
 
     
 
